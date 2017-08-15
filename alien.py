@@ -5,6 +5,7 @@
 import pygame
 from pygame.sprite import Sprite
 
+
 class Alien(Sprite):
     """表示单个外星人的类"""
 
@@ -22,7 +23,7 @@ class Alien(Sprite):
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
 
-        #存储外星人的准确位置
+        # 存储外星人的准确位置
         self.x = float(self.rect.x)
 
     def blitme(self):

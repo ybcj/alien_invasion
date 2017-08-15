@@ -1,6 +1,8 @@
 """
 设置模块
 """
+
+
 class Settings():
     """存储《外星人入侵》的所有设置的类"""
 
@@ -27,4 +29,3 @@ class Settings():
         self.fleet_drop_speed = 100
         # fleet_direction 为1表示向右移动， 为-1表示向左移动
         self.fleet_direction = 1
-        

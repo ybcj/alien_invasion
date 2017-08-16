@@ -8,6 +8,7 @@ from settings import Settings
 from ship import Ship
 from game_stats import GameStats
 from button import Button
+from scoreboard import ScoreBoard
 import game_functions as gf
 
 
@@ -37,22 +38,23 @@ def run_game():
 
     # 创建一个用于存储游戏统计信息的实例
     stats = GameStats(ai_settings)
+    sb = ScoreBoard(ai_settings, screen, stats)
 
     # 开始游戏的主循环
     while True:
         # 监视键盘和鼠标事件
-        gf.check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets)
+        gf.check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets)
 
         if stats.game_active:
             # 更新飞船位置
             ship.update()
             # 更新子弹
-            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+            gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
             # 更新外星人
-            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, stats, sb, screen, ship, aliens, bullets)
 
         # 每次循环时都重新绘制屏幕
-        gf.update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button)
+        gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button)
 
 if __name__ == '__main__':
     run_game()
